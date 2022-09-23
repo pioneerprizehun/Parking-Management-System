@@ -1,0 +1,82 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, FireDAC.Phys.MySQLDef,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.UI.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.MySQL, FireDAC.VCLUI.Wait,
+  FireDAC.Comp.Client, FireDAC.Comp.DataSet, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    GroupBox1: TGroupBox;
+    editID: TEdit;
+    editPW: TEdit;
+    btnLogin: TButton;
+    DBGrid1: TDBGrid;
+    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
+    FDQuery1: TFDQuery;
+    FDConnection1: TFDConnection;
+    DataSource1: TDataSource;
+    procedure btnLoginClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+uses unit2;
+{$R *.dfm}
+
+procedure TForm1.btnLoginClick(Sender: TObject);
+begin
+  try
+    begin
+      with FDConnection1 do begin
+      Params.Clear;
+      Params.Add('DriverID=MySQL');
+      Params.Add('Server=127.0.0.1');
+      Params.Add('Port=3306');
+      Params.Add('Database=parkinglot');
+      Params.Add('User_Name=root');
+      Params.Add('Password=root');
+
+      Params.Add('CharacterSet=utf8');
+
+      Open;
+      end;
+
+      with FDQuery1 do begin
+      SQL.Clear;
+      SQL.Add('select * from member');
+      SQL.Add('where mbID ="' + Form1.editID.Text + '" and mbPW ="' + Form1.editPW.Text + '"');
+
+      open;
+      end;
+
+      if editID.Text = dbGrid1.Fields[1].AsString then
+      showMessage('Login successful');
+      form1.Hide;
+      if editPW.Text = dbGrid1.Fields[2].AsString then
+      form2.show
+      else
+      ShowMessage('Login failed');
+      form1.Show;
+    end
+    except
+    ShowMessage('Login failed');
+  end;
+end;
+
+
+end.

@@ -1,0 +1,193 @@
+object Form2: TForm2
+  Left = 551
+  Top = 353
+  Caption = #51452#52264' '#52264#47049' '#44288#47532
+  ClientHeight = 465
+  ClientWidth = 876
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesigned
+  OnClose = FormClose
+  TextHeight = 15
+  object lblKIND: TLabel
+    Left = 112
+    Top = 480
+    Width = 40
+    Height = 15
+    Caption = 'lblKIND'
+  end
+  object lblENDTIME: TLabel
+    Left = 175
+    Top = 480
+    Width = 34
+    Height = 15
+    Caption = 'Label4'
+  end
+  object lblSTARTTIME: TLabel
+    Left = 175
+    Top = 496
+    Width = 34
+    Height = 15
+    Caption = 'Label4'
+  end
+  object DBGrid1: TDBGrid
+    Left = 215
+    Top = 8
+    Width = 658
+    Height = 451
+    DataSource = DataSource1
+    Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+  end
+  object search: TButton
+    Left = 8
+    Top = 168
+    Width = 201
+    Height = 41
+    Caption = #51312#54924
+    TabOrder = 1
+    OnClick = searchClick
+  end
+  object GroupBox1: TGroupBox
+    Left = 8
+    Top = 8
+    Width = 201
+    Height = 154
+    Caption = #52264#47049#44288#47532
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 14
+      Top = 34
+      Width = 48
+      Height = 15
+      Caption = #52264#47049#48264#54840
+    end
+    object EditCarNum: TEdit
+      Left = 68
+      Top = 31
+      Width = 121
+      Height = 23
+      TabOrder = 0
+    end
+    object Button1: TButton
+      Left = 11
+      Top = 89
+      Width = 178
+      Height = 25
+      Caption = #51077#52264
+      TabOrder = 1
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 11
+      Top = 122
+      Width = 178
+      Height = 25
+      Caption = #52636#52264
+      TabOrder = 2
+      OnClick = Button2Click
+    end
+    object ComboBox1: TComboBox
+      Left = 14
+      Top = 60
+      Width = 175
+      Height = 23
+      TabOrder = 3
+      Text = #51452#52264#51333#47448
+      Items.Strings = (
+        #51068#48152#51452#52264
+        #51068#51068#51452#52264)
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 8
+    Top = 271
+    Width = 201
+    Height = 186
+    Caption = #44552#50529#49688#51221
+    TabOrder = 3
+    object Label2: TLabel
+      Left = 12
+      Top = 20
+      Width = 60
+      Height = 15
+      Caption = '10'#48516#45817#44032#44201
+    end
+    object Label3: TLabel
+      Left = 12
+      Top = 70
+      Width = 69
+      Height = 15
+      Caption = '1'#51068' '#51452#52264#44032#44201
+    end
+    object Editminpay: TEdit
+      Left = 11
+      Top = 41
+      Width = 177
+      Height = 23
+      TabOrder = 0
+      Text = '400'
+    end
+    object Editdaypay: TEdit
+      Left = 12
+      Top = 91
+      Width = 177
+      Height = 23
+      TabOrder = 1
+      Text = '20000'
+    end
+  end
+  object Edit1: TEdit
+    Left = 175
+    Top = 519
+    Width = 121
+    Height = 23
+    TabOrder = 4
+    Text = 'Edit1'
+  end
+  object StartT: TEdit
+    Left = 432
+    Top = 519
+    Width = 121
+    Height = 23
+    TabOrder = 5
+    Text = 'date_format(NOW(), '#39'%Y-%m-%d %T'#39' )'
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 504
+    Top = 192
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from ledger')
+    Left = 456
+    Top = 192
+  end
+  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
+    VendorLib = 'C:\Users\js22\Desktop\libmariadb.dll'
+    Left = 456
+    Top = 224
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=parkinglot'
+      'User_Name=root'
+      'Password=root'
+      'Server=127.0.0.1'
+      'DriverID=MySQL')
+    Connected = True
+    Left = 504
+    Top = 224
+  end
+end
